@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to Roadie: Accident probability calculator’s documentation! &mdash; Roadie: Accident probability calculator 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            Roadie: Accident probability calculator
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Welcome to Roadie: Accident probability calculator’s documentation!</a><ul>
+<li><a class="reference internal" href="#model.preprocessing.connection_db"><code class="docutils literal notranslate"><span class="pre">connection_db()</span></code></a></li>
+<li><a class="reference internal" href="#model.preprocessing.create_xy"><code class="docutils literal notranslate"><span class="pre">create_xy()</span></code></a></li>
+<li><a class="reference internal" href="#model.preprocessing.fetch_data"><code class="docutils literal notranslate"><span class="pre">fetch_data()</span></code></a></li>
+<li><a class="reference internal" href="#model.preprocessing.fix_dtypes"><code class="docutils literal notranslate"><span class="pre">fix_dtypes()</span></code></a></li>
+<li><a class="reference internal" href="#model.preprocessing.normalize_data"><code class="docutils literal notranslate"><span class="pre">normalize_data()</span></code></a></li>
+<li><a class="reference internal" href="#model.preprocessing.remove_duplicates"><code class="docutils literal notranslate"><span class="pre">remove_duplicates()</span></code></a></li>
+<li><a class="reference internal" href="#model.preprocessing.remove_outliers"><code class="docutils literal notranslate"><span class="pre">remove_outliers()</span></code></a></li>
+<li><a class="reference internal" href="#model.preprocessing.split_tvt"><code class="docutils literal notranslate"><span class="pre">split_tvt()</span></code></a></li>
+<li><a class="reference internal" href="#model.feature_eng.calculate_gforce"><code class="docutils literal notranslate"><span class="pre">calculate_gforce()</span></code></a></li>
+<li><a class="reference internal" href="#model.feature_eng.create_additional_datetime_features"><code class="docutils literal notranslate"><span class="pre">create_additional_datetime_features()</span></code></a></li>
+<li><a class="reference internal" href="#model.feature_eng.set_speed_limit"><code class="docutils literal notranslate"><span class="pre">set_speed_limit()</span></code></a></li>
+<li><a class="reference internal" href="#model.model_selection.save_model_results"><code class="docutils literal notranslate"><span class="pre">save_model_results()</span></code></a></li>
+<li><a class="reference internal" href="#model.model_selection.train_neural_network"><code class="docutils literal notranslate"><span class="pre">train_neural_network()</span></code></a></li>
+<li><a class="reference internal" href="#model.model_selection.train_random_forest"><code class="docutils literal notranslate"><span class="pre">train_random_forest()</span></code></a></li>
+<li><a class="reference internal" href="#model.model_selection.train_xgboost_regression"><code class="docutils literal notranslate"><span class="pre">train_xgboost_regression()</span></code></a></li>
+<li><a class="reference internal" href="#model.final_nn_training.train_neural_network"><code class="docutils literal notranslate"><span class="pre">train_neural_network()</span></code></a></li>
+<li><a class="reference internal" href="#model.final_xgb_training.train_xgboost_regression"><code class="docutils literal notranslate"><span class="pre">train_xgboost_regression()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Roadie: Accident probability calculator</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Welcome to Roadie: Accident probability calculator’s documentation!</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="welcome-to-roadie-accident-probability-calculator-s-documentation">
+<h1>Welcome to Roadie: Accident probability calculator’s documentation!<a class="headerlink" href="#welcome-to-roadie-accident-probability-calculator-s-documentation" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<dl class="py function" id="module-model.preprocessing">
+<dt class="sig sig-object py" id="model.preprocessing.connection_db">
+<span class="sig-prename descclassname"><span class="pre">model.preprocessing.</span></span><span class="sig-name descname"><span class="pre">connection_db</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_to_json</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.preprocessing.connection_db" title="Link to this definition"></a></dt>
+<dd><p>Establish a connection to a PostgreSQL database using configuration parameters from a JSON file.</p>
+<p>This function loads database connection parameters from a specified JSON file and attempts to 
+establish a connection to a PostgreSQL database using these parameters. It returns the connection 
+object and cursor if successful, and logs an appropriate message.</p>
+<section id="parameters">
+<h2>Parameters:<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>path_to_json<span class="classifier">str</span></dt><dd><p>The file path to the JSON file containing the database connection parameters.</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h2>Returns:<a class="headerlink" href="#returns" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>conn<span class="classifier">psycopg2.extensions.connection</span></dt><dd><p>The connection object for the PostgreSQL database.</p>
+</dd>
+<dt>cursor<span class="classifier">psycopg2.extensions.cursor</span></dt><dd><p>The cursor object for the PostgreSQL database.</p>
+</dd>
+</dl>
+</section>
+<section id="raises">
+<h2>Raises:<a class="headerlink" href="#raises" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>OperationalError</dt><dd><p>If the connection to the database could not be established, an OperationalError is raised and
+an error message is logged.</p>
+</dd>
+</dl>
+</section>
+<section id="example-json-file-structure">
+<h2>Example JSON file structure:<a class="headerlink" href="#example-json-file-structure" title="Link to this heading"></a></h2>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;dbname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your_database_name&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your_username&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;password&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your_password&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your_host&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your_port&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="model.preprocessing.create_xy">
+<span class="sig-prename descclassname"><span class="pre">model.preprocessing.</span></span><span class="sig-name descname"><span class="pre">create_xy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.preprocessing.create_xy" title="Link to this definition"></a></dt>
+<dd><p>Create feature matrix X and target vectors y and y_sev from the DataFrame.</p>
+<p>This function separates the input DataFrame into features (X) and target variables (y and y_sev).
+The features matrix X is created by dropping the ‘accident_sev’ and ‘accident_prob’ columns from 
+the DataFrame. The target vectors y and y_sev are the ‘accident_prob’ and ‘accident_sev’ columns, 
+respectively.</p>
+<section id="id1">
+<h2>Parameters:<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>df<span class="classifier">pandas.DataFrame</span></dt><dd><p>The input DataFrame containing feature columns and target columns ‘accident_sev’ and ‘accident_prob’.</p>
+</dd>
+</dl>
+</section>
+<section id="id2">
+<h2>Returns:<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>X<span class="classifier">pandas.DataFrame</span></dt><dd><p>The feature matrix, created by dropping ‘accident_sev’ and ‘accident_prob’ from the input DataFrame.</p>
+</dd>
+<dt>y<span class="classifier">pandas.Series</span></dt><dd><p>The target vector for ‘accident_prob’.</p>
+</dd>
+<dt>y_sev<span class="classifier">pandas.Series</span></dt><dd><p>The target vector for ‘accident_sev’.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="model.preprocessing.fetch_data">
+<span class="sig-prename descclassname"><span class="pre">model.preprocessing.</span></span><span class="sig-name descname"><span class="pre">fetch_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_head</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.preprocessing.fetch_data" title="Link to this definition"></a></dt>
+<dd><p>Fetch data from the connected PostgreSQL database and load it into a pandas DataFrame.</p>
+<p>This function executes a SQL query to retrieve all records from the ‘group14_warehouse.regression_data’
+table. The results are loaded into a pandas DataFrame with specified column names. The connection 
+to the database is closed after fetching the data. Optionally, it can print the first few rows of the 
+DataFrame.</p>
+<section id="id3">
+<h2>Parameters:<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>conn<span class="classifier">psycopg2.extensions.connection</span></dt><dd><p>The connection object for the PostgreSQL database.</p>
+</dd>
+<dt>cursor<span class="classifier">psycopg2.extensions.cursor</span></dt><dd><p>The cursor object for the PostgreSQL database.</p>
+</dd>
+<dt>get_head<span class="classifier">bool, optional</span></dt><dd><p>If True, prints the first few rows of the DataFrame (default is False).</p>
+</dd>
+</dl>
+</section>
+<section id="id4">
+<h2>Returns:<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.DataFrame</dt><dd><p>DataFrame containing the data fetched from the database with the specified column names.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="model.preprocessing.fix_dtypes">
+<span class="sig-prename descclassname"><span class="pre">model.preprocessing.</span></span><span class="sig-name descname"><span class="pre">fix_dtypes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cats</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dats</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.preprocessing.fix_dtypes" title="Link to this definition"></a></dt>
+<dd><p>Fix data types for datetime and categorical columns in the DataFrame.</p>
+<p>This function converts specified columns to datetime and categorical types. 
+The datetime columns are converted using <cite>pd.to_datetime</cite>, and the categorical 
+columns are encoded using <cite>LabelEncoder</cite>.</p>
+<section id="id5">
+<h2>Parameters:<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>df<span class="classifier">pandas.DataFrame</span></dt><dd><p>The input DataFrame with columns to be converted.</p>
+</dd>
+<dt>cats<span class="classifier">list of str</span></dt><dd><p>List of column names to be converted to categorical types and encoded.</p>
+</dd>
+<dt>dats<span class="classifier">list of str</span></dt><dd><p>List of column names to be converted to datetime types.</p>
+</dd>
+</dl>
+</section>
+<section id="id6">
+<h2>Returns:<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.DataFrame</dt><dd><p>The input DataFrame with specified columns converted to appropriate types.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="model.preprocessing.normalize_data">
+<span class="sig-prename descclassname"><span class="pre">model.preprocessing.</span></span><span class="sig-name descname"><span class="pre">normalize_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaler</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.preprocessing.normalize_data" title="Link to this definition"></a></dt>
+<dd><p>Normalize the data using a scaler across training, validation, and testing partitions.</p>
+<p>This function normalizes the data using a scaler across training, validation, and testing partitions.
+If no scaler is provided, it initializes a <cite>StandardScaler</cite> and fits it on the training data. It then
+transforms the data for all partitions using the fitted scaler.</p>
+<section id="id7">
+<h2>Parameters:<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>X_train<span class="classifier">numpy.ndarray or pandas.DataFrame</span></dt><dd><p>The training feature matrix to be normalized.</p>
+</dd>
+<dt>X_val<span class="classifier">numpy.ndarray or pandas.DataFrame, optional</span></dt><dd><p>The validation feature matrix to be normalized (default is None).</p>
+</dd>
+<dt>X_test<span class="classifier">numpy.ndarray or pandas.DataFrame, optional</span></dt><dd><p>The testing feature matrix to be normalized (default is None).</p>
+</dd>
+<dt>scaler<span class="classifier">sklearn-like scaler object, optional</span></dt><dd><p>The scaler object used to normalize the data (default is None).</p>
+</dd>
+</dl>
+</section>
+<section id="id8">
+<h2>Returns:<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>X_train_norm<span class="classifier">numpy.ndarray</span></dt><dd><p>The normalized training feature matrix.</p>
+</dd>
+<dt>X_val_norm<span class="classifier">numpy.ndarray or None</span></dt><dd><p>The normalized validation feature matrix, or None if X_val is None.</p>
+</dd>
+<dt>X_test_norm<span class="classifier">numpy.ndarray or None</span></dt><dd><p>The normalized testing feature matrix, or None if X_test is None.</p>
+</dd>
+<dt>scaler<span class="classifier">sklearn-like scaler object</span></dt><dd><p>The scaler object fitted on the training data, used for normalization.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="model.preprocessing.remove_duplicates">
+<span class="sig-prename descclassname"><span class="pre">model.preprocessing.</span></span><span class="sig-name descname"><span class="pre">remove_duplicates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.preprocessing.remove_duplicates" title="Link to this definition"></a></dt>
+<dd><p>Remove duplicate rows from the DataFrame.</p>
+<p>This function identifies and removes duplicate rows from the input DataFrame. 
+It keeps only the unique rows and removes all duplicates.</p>
+<section id="id9">
+<h2>Parameters:<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>df<span class="classifier">pandas.DataFrame</span></dt><dd><p>The input DataFrame from which duplicate rows need to be removed.</p>
+</dd>
+</dl>
+</section>
+<section id="id10">
+<h2>Returns:<a class="headerlink" href="#id10" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.DataFrame</dt><dd><p>The input DataFrame with duplicate rows removed.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="model.preprocessing.remove_outliers">
+<span class="sig-prename descclassname"><span class="pre">model.preprocessing.</span></span><span class="sig-name descname"><span class="pre">remove_outliers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.preprocessing.remove_outliers" title="Link to this definition"></a></dt>
+<dd><p>Remove outliers from the DataFrame based on the ‘accident_prob’ column.</p>
+<p>This function filters out rows in the input DataFrame where the value in the ‘accident_prob’ 
+column exceeds a specified threshold. Specifically, it removes rows where ‘accident_prob’ is greater 
+than 100.</p>
+<section id="id11">
+<h2>Parameters:<a class="headerlink" href="#id11" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>df<span class="classifier">pandas.DataFrame</span></dt><dd><p>DataFrame containing an ‘accident_prob’ column.</p>
+</dd>
+</dl>
+</section>
+<section id="id12">
+<h2>Returns:<a class="headerlink" href="#id12" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.DataFrame</dt><dd><p>The input DataFrame with rows where ‘accident_prob’ exceeds 100 removed.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="model.preprocessing.split_tvt">
+<span class="sig-prename descclassname"><span class="pre">model.preprocessing.</span></span><span class="sig-name descname"><span class="pre">split_tvt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.preprocessing.split_tvt" title="Link to this definition"></a></dt>
+<dd><p>Split the data into training, validation, and testing partitions.</p>
+<p>This function splits the feature matrix X and target vector y into training, validation, 
+and testing sets. It performs two splits: first to create the training and testing sets, 
+and then to split the training set further into training and validation sets. The function 
+ensures that there are enough samples in each partition and logs the shapes of the resulting 
+datasets.</p>
+<section id="id13">
+<h2>Parameters:<a class="headerlink" href="#id13" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>X<span class="classifier">pandas.DataFrame</span></dt><dd><p>The feature matrix.</p>
+</dd>
+<dt>y<span class="classifier">pandas.Series</span></dt><dd><p>The target vector.</p>
+</dd>
+</dl>
+</section>
+<section id="id14">
+<h2>Returns:<a class="headerlink" href="#id14" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>X_train<span class="classifier">pandas.DataFrame</span></dt><dd><p>The training feature matrix.</p>
+</dd>
+<dt>X_val<span class="classifier">pandas.DataFrame</span></dt><dd><p>The validation feature matrix.</p>
+</dd>
+<dt>X_test<span class="classifier">pandas.DataFrame</span></dt><dd><p>The testing feature matrix.</p>
+</dd>
+<dt>y_train<span class="classifier">pandas.Series</span></dt><dd><p>The training target vector.</p>
+</dd>
+<dt>y_val<span class="classifier">pandas.Series</span></dt><dd><p>The validation target vector.</p>
+</dd>
+<dt>y_test<span class="classifier">pandas.Series</span></dt><dd><p>The testing target vector.</p>
+</dd>
+</dl>
+</section>
+<section id="id15">
+<h2>Raises:<a class="headerlink" href="#id15" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>ValueError</dt><dd><p>If the number of samples in X is too small to split or if the number of samples 
+in the training set is too small after the test split.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function" id="module-model.feature_eng">
+<dt class="sig sig-object py" id="model.feature_eng.calculate_gforce">
+<span class="sig-prename descclassname"><span class="pre">model.feature_eng.</span></span><span class="sig-name descname"><span class="pre">calculate_gforce</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.feature_eng.calculate_gforce" title="Link to this definition"></a></dt>
+<dd><p>Calculate the g-force for events in the DataFrame.</p>
+<p>This function calculates the g-force experienced during events recorded in the input DataFrame.
+It differentiates between events categorized as ‘event_cat’ 3 (where ‘maxwaarde’ represents speed)
+and other events (where ‘maxwaarde’ represents g-force). For non-speed events, it calculates the g-force
+based on the change in speed and the duration of the event.</p>
+<section id="id16">
+<h2>Parameters:<a class="headerlink" href="#id16" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>df<span class="classifier">pandas.DataFrame</span></dt><dd><p>DataFrame containing at least the columns ‘event_cat’, ‘maxwaarde’, ‘speed’, 
+‘maxspeed’, ‘duration_in_s’, and ‘gforce’.</p>
+</dd>
+</dl>
+</section>
+<section id="id17">
+<h2>Returns:<a class="headerlink" href="#id17" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.DataFrame</dt><dd><p>The input DataFrame with updated ‘gforce’ values and intermediate calculation columns removed.</p>
+</dd>
+</dl>
+</section>
+<section id="process">
+<h2>Process:<a class="headerlink" href="#process" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>For events with ‘event_cat’ == 3, ‘maxwaarde’ is assigned to ‘maxspeed’.</p></li>
+<li><p>For events with ‘event_cat’ != 3, ‘maxwaarde’ is assigned to ‘gforce’.</p></li>
+<li><p>Calculate the change in speed (‘delta_v’) as the difference between ‘maxspeed’ and ‘speed’.</p></li>
+<li><p>Calculate the acceleration (‘acceleration’) as ‘delta_v’ divided by ‘duration_in_s’.</p></li>
+<li><p>Calculate the g-force (‘calculated_gforce’) as ‘acceleration’ divided by 9.81.</p></li>
+<li><p>Fill NaN values in the original ‘gforce’ column with ‘calculated_gforce’.</p></li>
+<li><p>Drop the intermediate calculation columns (‘delta_v’, ‘acceleration’, ‘calculated_gforce’).</p></li>
+</ol>
+</section>
+<section id="notes">
+<h2>Notes:<a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>The function assumes the input DataFrame has been pre-processed with the ‘duration_in_s’ column
+correctly calculated as the duration in seconds.</p></li>
+<li><p>The gravitational constant used for calculating g-force is 9.81 m/s².</p></li>
+</ul>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="model.feature_eng.create_additional_datetime_features">
+<span class="sig-prename descclassname"><span class="pre">model.feature_eng.</span></span><span class="sig-name descname"><span class="pre">create_additional_datetime_features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.feature_eng.create_additional_datetime_features" title="Link to this definition"></a></dt>
+<dd><p>Add additional datetime-related features to the DataFrame.</p>
+<p>This function enriches the input DataFrame by computing various datetime-related features
+based on the columns ‘datetime_s’ (start datetime) and ‘datetime_e’ (end datetime). 
+The new features added include:
+- ‘is_holiday’: Boolean indicating if the date is a Dutch national holiday.
+- ‘weekday’: Day of the week represented as an integer (0 = Monday, 6 = Sunday).
+- ‘hour’: Hour of the day (0-23).
+- ‘duration’: Duration between ‘datetime_s’ and ‘datetime_e’ as a timedelta.
+- ‘duration_in_s’: Duration in seconds as an integer.</p>
+<section id="id18">
+<h2>Parameters:<a class="headerlink" href="#id18" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>df<span class="classifier">pandas.DataFrame</span></dt><dd><p>DataFrame containing at least the columns ‘datetime_s’ and ‘datetime_e’, 
+which represent the start and end datetimes, respectively.</p>
+</dd>
+</dl>
+</section>
+<section id="id19">
+<h2>Returns:<a class="headerlink" href="#id19" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.DataFrame</dt><dd><p>The input DataFrame with additional columns:
+- ‘is_holiday’: Boolean column indicating if ‘datetime_s’ falls on a Dutch national holiday.
+- ‘weekday’: Integer column representing the day of the week for ‘datetime_s’.
+- ‘hour’: Integer column representing the hour of the day for ‘datetime_s’.
+- ‘duration’: Timedelta column representing the difference between ‘datetime_e’ and ‘datetime_s’.
+- ‘duration_in_s’: Integer column representing the duration in seconds.</p>
+</dd>
+</dl>
+</section>
+<section id="id20">
+<h2>Notes:<a class="headerlink" href="#id20" title="Link to this heading"></a></h2>
+<p>The list of Dutch national holidays is hardcoded for the years 2018-2024.</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="model.feature_eng.set_speed_limit">
+<span class="sig-prename descclassname"><span class="pre">model.feature_eng.</span></span><span class="sig-name descname"><span class="pre">set_speed_limit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.feature_eng.set_speed_limit" title="Link to this definition"></a></dt>
+<dd><p>Clean and convert the ‘speed_limit’ column in the DataFrame.</p>
+<p>This function processes the ‘speed_limit’ column by replacing non-numeric values (“Un” and “No”)
+with “0”, and then converting the column to integer type. Rows where ‘speed_limit’ cannot be 
+converted to a numeric value even after replacements are dropped.</p>
+<section id="id21">
+<h2>Parameters:<a class="headerlink" href="#id21" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>df<span class="classifier">pandas.DataFrame</span></dt><dd><p>DataFrame containing a ‘speed_limit’ column with mixed data types that need to be cleaned 
+and converted to integers.</p>
+</dd>
+</dl>
+</section>
+<section id="id22">
+<h2>Returns:<a class="headerlink" href="#id22" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.DataFrame</dt><dd><p>The input DataFrame with the ‘speed_limit’ column cleaned and converted to integers. Rows 
+with non-numeric ‘speed_limit’ values after replacements are dropped.</p>
+</dd>
+</dl>
+</section>
+<section id="id23">
+<h2>Process:<a class="headerlink" href="#id23" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Replace “Un” with “0” in the ‘speed_limit’ column.</p></li>
+<li><p>Replace “No” with “0” in the ‘speed_limit’ column.</p></li>
+<li><p>Drop rows where ‘speed_limit’ is not numeric after the replacements.</p></li>
+<li><p>Convert the ‘speed_limit’ column to integer type.</p></li>
+</ol>
+</section>
+</dd></dl>
+
+<dl class="py function" id="module-model.model_selection">
+<dt class="sig sig-object py" id="model.model_selection.save_model_results">
+<span class="sig-prename descclassname"><span class="pre">model.model_selection.</span></span><span class="sig-name descname"><span class="pre">save_model_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">history</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_mse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_mse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_mae</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_mae</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'model_results.html'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.model_selection.save_model_results" title="Link to this definition"></a></dt>
+<dd><p>Save the results of a machine learning model training and evaluation to an HTML file.</p>
+<p>This function writes an HTML file with the model type, feature importances (if applicable), training and
+validation scores (MSE and MAE), and optionally training history for Keras models. The file also includes
+saving the model itself using native serialization methods (e.g., XGBoost model) or Keras’s <cite>.h5</cite> format.</p>
+<section id="id24">
+<h2>Parameters:<a class="headerlink" href="#id24" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>model<span class="classifier">object</span></dt><dd><p>The trained machine learning model.</p>
+</dd>
+<dt>train_data<span class="classifier">numpy.ndarray or None, optional</span></dt><dd><p>Training data used for the model (default is None).</p>
+</dd>
+<dt>history<span class="classifier">tf.keras.callbacks.History or None, optional</span></dt><dd><p>History object from Keras training (default is None).</p>
+</dd>
+<dt>train_mse<span class="classifier">float or None, optional</span></dt><dd><p>Mean Squared Error (MSE) score on training data (default is None).</p>
+</dd>
+<dt>val_mse<span class="classifier">float or None, optional</span></dt><dd><p>Mean Squared Error (MSE) score on validation data (default is None).</p>
+</dd>
+<dt>train_mae<span class="classifier">float or None, optional</span></dt><dd><p>Mean Absolute Error (MAE) score on training data (default is None).</p>
+</dd>
+<dt>val_mae<span class="classifier">float or None, optional</span></dt><dd><p>Mean Absolute Error (MAE) score on validation data (default is None).</p>
+</dd>
+<dt>filename<span class="classifier">str, optional</span></dt><dd><p>File name to save the results (default is ‘model_results.html’).</p>
+</dd>
+</dl>
+</section>
+<section id="id25">
+<h2>Raises:<a class="headerlink" href="#id25" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>TypeError</dt><dd><p>If the type of <cite>model</cite> is not recognized (not XGBoost, RandomForestRegressor, or Keras model).</p>
+</dd>
+<dt>Exception</dt><dd><p>If any unexpected error occurs during the file writing process.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="model.model_selection.train_neural_network">
+<span class="sig-prename descclassname"><span class="pre">model.model_selection.</span></span><span class="sig-name descname"><span class="pre">train_neural_network</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patience</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[64,</span> <span class="pre">32]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learning_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.model_selection.train_neural_network" title="Link to this definition"></a></dt>
+<dd><p>Train a feedforward neural network regression model using TensorFlow/Keras.</p>
+<p>This function trains a feedforward neural network regression model using the training data (X_train, y_train)
+and evaluates its performance on the validation data (X_val, y_val). It uses Mean Squared Error (MSE) as the
+loss function and Adam optimizer for training. The function logs messages for training start, training finish,
+and any errors encountered during the process.</p>
+<section id="id26">
+<h2>Parameters:<a class="headerlink" href="#id26" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>X_train<span class="classifier">numpy.ndarray</span></dt><dd><p>The training feature matrix.</p>
+</dd>
+<dt>y_train<span class="classifier">numpy.ndarray</span></dt><dd><p>The training target vector.</p>
+</dd>
+<dt>X_val<span class="classifier">numpy.ndarray</span></dt><dd><p>The validation feature matrix.</p>
+</dd>
+<dt>y_val<span class="classifier">numpy.ndarray</span></dt><dd><p>The validation target vector.</p>
+</dd>
+<dt>epochs<span class="classifier">int, optional</span></dt><dd><p>Number of epochs for training (default is 20).</p>
+</dd>
+<dt>batch_size<span class="classifier">int, optional</span></dt><dd><p>Number of samples per gradient update (default is 64).</p>
+</dd>
+<dt>patience<span class="classifier">int, optional</span></dt><dd><p>Number of epochs with no improvement after which training will be stopped if <cite>early_stopping</cite> is used
+(default is 4).</p>
+</dd>
+<dt>hidden_layers<span class="classifier">list of int, optional</span></dt><dd><p>List specifying the number of units in each hidden layer (default is [64, 32]).</p>
+</dd>
+<dt>learning_rate<span class="classifier">float, optional</span></dt><dd><p>Learning rate for the Adam optimizer (default is 0.01).</p>
+</dd>
+</dl>
+</section>
+<section id="id27">
+<h2>Returns:<a class="headerlink" href="#id27" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>model<span class="classifier">tf.keras.models.Sequential</span></dt><dd><p>The trained neural network model.</p>
+</dd>
+<dt>history<span class="classifier">tf.keras.callbacks.History</span></dt><dd><p>History object containing training metrics.</p>
+</dd>
+</dl>
+</section>
+<section id="id28">
+<h2>Raises:<a class="headerlink" href="#id28" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>TypeError</dt><dd><p>If X_train, y_train, X_val, or y_val are not numpy arrays.</p>
+</dd>
+<dt>ValueError</dt><dd><p>If X_train and y_train, or X_val and y_val, do not have the same number of samples.</p>
+</dd>
+<dt>Exception</dt><dd><p>If any other unexpected error occurs during training and evaluation.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="model.model_selection.train_random_forest">
+<span class="sig-prename descclassname"><span class="pre">model.model_selection.</span></span><span class="sig-name descname"><span class="pre">train_random_forest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_estimators</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.model_selection.train_random_forest" title="Link to this definition"></a></dt>
+<dd><p>Train a Random Forest regressor model and evaluate its performance.</p>
+<p>This function trains a Random Forest regressor model using the training data (X_train, y_train)
+and evaluates its performance on the validation data (X_val, y_val). It calculates Mean Squared 
+Error (MSE) and Mean Absolute Error (MAE) for both training and validation sets. The function logs 
+messages for training, evaluation, and any errors encountered during the process.</p>
+<section id="id29">
+<h2>Parameters:<a class="headerlink" href="#id29" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>X_train<span class="classifier">numpy.ndarray</span></dt><dd><p>The training feature matrix.</p>
+</dd>
+<dt>y_train<span class="classifier">numpy.ndarray</span></dt><dd><p>The training target vector.</p>
+</dd>
+<dt>X_val<span class="classifier">numpy.ndarray</span></dt><dd><p>The validation feature matrix.</p>
+</dd>
+<dt>y_val<span class="classifier">numpy.ndarray</span></dt><dd><p>The validation target vector.</p>
+</dd>
+<dt>n_estimators<span class="classifier">int, optional</span></dt><dd><p>The number of trees in the Random Forest (default is 100).</p>
+</dd>
+<dt>random_state<span class="classifier">int or None, optional</span></dt><dd><p>The random seed for reproducibility (default is None).</p>
+</dd>
+</dl>
+</section>
+<section id="id30">
+<h2>Returns:<a class="headerlink" href="#id30" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>model<span class="classifier">RandomForestRegressor</span></dt><dd><p>The trained Random Forest regressor model.</p>
+</dd>
+<dt>train_mse<span class="classifier">float</span></dt><dd><p>Mean Squared Error (MSE) on the training set.</p>
+</dd>
+<dt>val_mse<span class="classifier">float</span></dt><dd><p>Mean Squared Error (MSE) on the validation set.</p>
+</dd>
+<dt>train_mae<span class="classifier">float</span></dt><dd><p>Mean Absolute Error (MAE) on the training set.</p>
+</dd>
+<dt>val_mae<span class="classifier">float</span></dt><dd><p>Mean Absolute Error (MAE) on the validation set.</p>
+</dd>
+</dl>
+</section>
+<section id="id31">
+<h2>Raises:<a class="headerlink" href="#id31" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>TypeError</dt><dd><p>If X_train, y_train, X_val, or y_val are not numpy arrays.</p>
+</dd>
+<dt>ValueError</dt><dd><p>If X_train and y_train, or X_val and y_val, do not have the same number of samples.</p>
+</dd>
+<dt>Exception</dt><dd><p>If any other unexpected error occurs during training and evaluation.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="model.model_selection.train_xgboost_regression">
+<span class="sig-prename descclassname"><span class="pre">model.model_selection.</span></span><span class="sig-name descname"><span class="pre">train_xgboost_regression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_boost_round</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">early_stopping_rounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.model_selection.train_xgboost_regression" title="Link to this definition"></a></dt>
+<dd><p>Train an XGBoost regression model and evaluate its performance.</p>
+<p>This function trains an XGBoost regression model using the training data (X_train, y_train) 
+and evaluates its performance on the validation data (X_val, y_val). It calculates Mean 
+Squared Error (MSE) and Mean Absolute Error (MAE) for both training and validation sets. 
+The function logs messages for training, evaluation, and any errors encountered during the process.</p>
+<section id="id32">
+<h2>Parameters:<a class="headerlink" href="#id32" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>X_train<span class="classifier">numpy.ndarray</span></dt><dd><p>The training feature matrix.</p>
+</dd>
+<dt>y_train<span class="classifier">numpy.ndarray</span></dt><dd><p>The training target vector.</p>
+</dd>
+<dt>X_val<span class="classifier">numpy.ndarray</span></dt><dd><p>The validation feature matrix.</p>
+</dd>
+<dt>y_val<span class="classifier">numpy.ndarray</span></dt><dd><p>The validation target vector.</p>
+</dd>
+<dt>params<span class="classifier">dict, optional</span></dt><dd><dl class="simple">
+<dt>Parameters to be passed to the XGBoost model (default is None). If None, defaults to:</dt><dd><p>‘objective’: ‘reg:squarederror’,  # Squared error for regression
+‘eval_metric’: ‘rmse’             # Evaluation metric: Root Mean Squared Error (RMSE)</p>
+</dd>
+</dl>
+</dd>
+<dt>num_boost_round<span class="classifier">int, optional</span></dt><dd><p>Number of boosting rounds (default is 1000).</p>
+</dd>
+<dt>early_stopping_rounds<span class="classifier">int, optional</span></dt><dd><p>Activates early stopping. The model will train until validation score stops improving 
+for <cite>early_stopping_rounds</cite> rounds (default is 50).</p>
+</dd>
+</dl>
+</section>
+<section id="id33">
+<h2>Returns:<a class="headerlink" href="#id33" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>trained_model<span class="classifier">xgboost.core.Booster</span></dt><dd><p>The trained XGBoost regression model.</p>
+</dd>
+<dt>train_mse<span class="classifier">float</span></dt><dd><p>Mean Squared Error (MSE) on the training set.</p>
+</dd>
+<dt>val_mse<span class="classifier">float</span></dt><dd><p>Mean Squared Error (MSE) on the validation set.</p>
+</dd>
+<dt>train_mae<span class="classifier">float</span></dt><dd><p>Mean Absolute Error (MAE) on the training set.</p>
+</dd>
+<dt>val_mae<span class="classifier">float</span></dt><dd><p>Mean Absolute Error (MAE) on the validation set.</p>
+</dd>
+</dl>
+</section>
+<section id="id34">
+<h2>Raises:<a class="headerlink" href="#id34" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>TypeError</dt><dd><p>If X_train, y_train, X_val, or y_val are not numpy arrays.</p>
+</dd>
+<dt>ValueError</dt><dd><p>If X_train and y_train, or X_val and y_val, do not have the same number of samples.</p>
+</dd>
+<dt>Exception</dt><dd><p>If any other unexpected error occurs during training and evaluation.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function" id="module-model.final_nn_training">
+<dt class="sig sig-object py" id="model.final_nn_training.train_neural_network">
+<span class="sig-prename descclassname"><span class="pre">model.final_nn_training.</span></span><span class="sig-name descname"><span class="pre">train_neural_network</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patience</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learning_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.final_nn_training.train_neural_network" title="Link to this definition"></a></dt>
+<dd><p>Train a neural network model using TensorFlow/Keras.</p>
+<section id="id35">
+<h2>Parameters:<a class="headerlink" href="#id35" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>X_train<span class="classifier">numpy.ndarray</span></dt><dd><p>Training data features.</p>
+</dd>
+<dt>y_train<span class="classifier">numpy.ndarray</span></dt><dd><p>Training data labels.</p>
+</dd>
+<dt>X_val<span class="classifier">numpy.ndarray</span></dt><dd><p>Validation data features.</p>
+</dd>
+<dt>y_val<span class="classifier">numpy.ndarray</span></dt><dd><p>Validation data labels.</p>
+</dd>
+<dt>epochs<span class="classifier">int, optional</span></dt><dd><p>Number of epochs to train the model (default is 20).</p>
+</dd>
+<dt>batch_size<span class="classifier">int, optional</span></dt><dd><p>Number of samples per gradient update (default is 64).</p>
+</dd>
+<dt>patience<span class="classifier">int, optional</span></dt><dd><p>Number of epochs with no improvement after which training will be stopped (default is 10).</p>
+</dd>
+<dt>learning_rate<span class="classifier">float, optional</span></dt><dd><p>Learning rate for the Adam optimizer (default is 0.1).</p>
+</dd>
+</dl>
+</section>
+<section id="id36">
+<h2>Returns:<a class="headerlink" href="#id36" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>model<span class="classifier">tf.keras.Model</span></dt><dd><p>Trained neural network model.</p>
+</dd>
+<dt>history<span class="classifier">tf.keras.callbacks.History</span></dt><dd><p>History object containing training metrics.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function" id="module-model.final_xgb_training">
+<dt class="sig sig-object py" id="model.final_xgb_training.train_xgboost_regression">
+<span class="sig-prename descclassname"><span class="pre">model.final_xgb_training.</span></span><span class="sig-name descname"><span class="pre">train_xgboost_regression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_boost_round</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">early_stopping_rounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.final_xgb_training.train_xgboost_regression" title="Link to this definition"></a></dt>
+<dd><p>Trains an XGBoost regressor using randomized search for hyperparameter optimization
+and early stopping based on validation performance.</p>
+<section id="id37">
+<h2>Parameters:<a class="headerlink" href="#id37" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>X_train<span class="classifier">numpy.ndarray</span></dt><dd><p>Training data features of shape (n_samples, n_features).</p>
+</dd>
+<dt>y_train<span class="classifier">numpy.ndarray</span></dt><dd><p>Training data labels of shape (n_samples,).</p>
+</dd>
+<dt>X_val<span class="classifier">numpy.ndarray</span></dt><dd><p>Validation data features of shape (n_samples, n_features).</p>
+</dd>
+<dt>y_val<span class="classifier">numpy.ndarray</span></dt><dd><p>Validation data labels of shape (n_samples,).</p>
+</dd>
+<dt>params<span class="classifier">dict, optional</span></dt><dd><p>Parameters for XGBoost regressor. If None, default parameters are used:
+{‘objective’: ‘reg:squarederror’, ‘eval_metric’: ‘rmse’}.</p>
+</dd>
+<dt>num_boost_round<span class="classifier">int, optional</span></dt><dd><p>Number of boosting rounds (trees) to train. Default is 1000.</p>
+</dd>
+<dt>early_stopping_rounds<span class="classifier">int, optional</span></dt><dd><p>Activates early stopping. Validation performance needs to improve at least
+once in every early_stopping_rounds round(s) to continue training. Default is 50.</p>
+</dd>
+<dt>n_iter<span class="classifier">int, optional</span></dt><dd><p>Number of parameter settings that are sampled in randomized search. Default is 50.</p>
+</dd>
+<dt>n_jobs<span class="classifier">int, optional</span></dt><dd><p>Number of jobs to run in parallel for randomized search. -1 means using all processors.
+Default is -1.</p>
+</dd>
+</dl>
+</section>
+<section id="id38">
+<h2>Returns:<a class="headerlink" href="#id38" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>best_model<span class="classifier">xgboost.sklearn.XGBRegressor</span></dt><dd><p>Best trained XGBoost regressor model based on validation performance.</p>
+</dd>
+<dt>train_mse<span class="classifier">float</span></dt><dd><p>Mean squared error (MSE) of the training set predictions.</p>
+</dd>
+<dt>val_mse<span class="classifier">float</span></dt><dd><p>Mean squared error (MSE) of the validation set predictions.</p>
+</dd>
+<dt>train_mae<span class="classifier">float</span></dt><dd><p>Mean absolute error (MAE) of the training set predictions.</p>
+</dd>
+<dt>val_mae<span class="classifier">float</span></dt><dd><p>Mean absolute error (MAE) of the validation set predictions.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Anton Ovcharenko, Balazs Csutar, Danylo Dmytrenko, Nils Vos.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
