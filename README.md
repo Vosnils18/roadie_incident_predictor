@@ -364,6 +364,7 @@ This is an academic collaboration with ANWB. For commercial use or production de
 - **ANWB** for providing the business case and domain expertise
 - **Breda University of Applied Sciences** for academic supervision
 - Open-source community for excellent ML frameworks (TensorFlow, XGBoost, scikit-learn)
+- [Balazs Csutar](https://www.linkedin.com/in/balazscsutar/) for creating the frontend of the application.
 
 ## 📸 Preview
 
